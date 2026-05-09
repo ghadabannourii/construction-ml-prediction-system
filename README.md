@@ -1,2 +1,87 @@
-# prdiction_contruction_system
-# prediction
+# Construction ML Prediction System
+
+This project is a small full-stack demo for predicting construction project performance.
+
+## How It Works
+
+The app has two parts:
+
+1. The backend is a Flask API in `backend/app.py`.
+2. The frontend is a React + Vite app in `frontend/src/App.tsx`.
+
+The frontend collects project metrics from a form and sends them to the backend at `POST /predict`. The backend loads the saved XGBoost model artifacts from `backend/artifacts/`, converts the input into model features, and returns a prediction with class probabilities.
+
+## Data Flow
+
+1. You open the frontend in the browser.
+2. You fill in the construction project values.
+3. The form sends JSON to the Flask API.
+4. The API validates the fields, prepares the features, and runs the model.
+5. The API returns:
+	- predicted class
+	- predicted code
+	- confidence score
+	- probability distribution across all classes
+6. The frontend displays the result.
+
+## Backend
+
+The backend exposes these endpoints:
+
+- `GET /` - basic status message
+- `GET /health` - health check and model info
+- `GET /schema` - required fields and class labels
+- `POST /predict` - single prediction
+- `POST /predict-batch` - batch predictions
+
+
+The backend expects these input fields:
+
+- `temperature`
+- `humidity`
+- `vibration_level`
+- `material_usage`
+- `machinery_status`
+- `worker_count`
+- `energy_consumption`
+- `task_progress`
+- `cost_deviation`
+- `time_deviation`
+- `safety_incidents`
+- `equipment_utilization_rate`
+- `material_shortage_alert`
+- `risk_score`
+- `simulation_deviation`
+- `update_frequency`
+- `optimization_suggestion`
+
+
+## Frontend
+
+The frontend is a form-based UI. It uses `VITE_API_BASE_URL` if you set it, otherwise it talks to `http://localhost:5000`.
+
+## Local Run
+
+Backend:
+
+```bash
+cd backend
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+python app.py
+```
+
+Frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+## Notes
+
+- The model files are stored in `backend/artifacts/`.
+- If the backend cannot load the model artifacts, it will try to rebuild them from `construction_project_dataset.csv`.
+- The frontend currently shows results from the Flask API and is designed for local development.
