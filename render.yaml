@@ -13,8 +13,6 @@ services:
     routes:
       - type: http
         path: /
-        middlewares:
-          - http.add_request_header:Access-Control-Allow-Origin:*
     numInstances: 1
     region: oregon
 
