@@ -19,7 +19,8 @@ services:
     name: safety-skin-api
     env: python
     buildCommand: pip install -r safety/requirements.txt
-    startCommand: uvicorn safety.main:app --host 0.0.0.0 --port $PORT
+    startCommand: sh -c "uvicorn safety.main:app --host 0.0.0.0 --port $PORT"
+    healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.0"
