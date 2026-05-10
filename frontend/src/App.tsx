@@ -51,8 +51,8 @@ function App() {
         <Route path="datasets" element={<DatasetsPage />} />
         <Route path="datasets/:datasetId" element={<DatasetDetailPage />} />
         <Route path="about" element={<AboutPage />} />
-        
         <Route path="*" element={<Navigate to="/" replace />} />
+        
       </Route>
     </Routes>
   );
