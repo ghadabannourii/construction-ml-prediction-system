@@ -76,6 +76,7 @@ export const navigation = [
   { label: 'Home', href: '/' },
   { label: 'Predict', href: '/predict' },
   { label: 'HAM10000 Lab', href: '/ham10000' },
+  { label: 'SafetyVision', href: '/safetyvision' },
   { label: 'Models', href: '/models' },
   { label: 'Datasets', href: '/datasets' },
   { label: 'About', href: '/about' },
