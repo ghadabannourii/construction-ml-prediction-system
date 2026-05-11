@@ -58,6 +58,8 @@ CORS(app, origins=[
     "https://building-ml.vercel.app",
     # Allow all Vercel preview URLs
     r"https://.*\.vercel\.app",
+    # Render deployment
+    "https://construction-ml-prediction-system.onrender.com",
 ])
 
 
